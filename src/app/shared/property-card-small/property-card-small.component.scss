@@ -75,8 +75,13 @@ mat-card.property-card-small {
         }
       }
 
-      &.price {
+      &.price-disclaimer {
         padding-top: 8px;
+        color: mat-color($nexthome-front-primary);
+        font-size: 0.875rem;
+      }
+
+      &.price {
         color: mat-color($nexthome-front-primary);
         font-weight: bold;
         font-size: 1rem;
