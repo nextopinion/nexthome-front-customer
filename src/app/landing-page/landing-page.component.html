@@ -81,6 +81,19 @@
 
 <section id="top-properties">
   <div class="flex-container" fxLayout="column">
+    <div class="title mb-16">
+      <span class="align-self-center">Ver imóveis mais recentes em</span>
+
+      <mat-form-field appearance="fill" class="filter-city">
+        <mat-select [ngModel]="'Maceió'">
+          <mat-option value="Maceió">Maceió</mat-option>
+          <mat-option value="São Paulo">São Paulo</mat-option>
+          <mat-option value="Arapiraca">Arapiraca</mat-option>
+          <mat-option value="Rio de Janeiro">Rio de Janeiro</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
     <div class="width-100" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center">
       <app-property-card-small></app-property-card-small>
       <app-property-card-small></app-property-card-small>
@@ -89,3 +102,66 @@
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="flex-container">
+    <div fxFlex="row nowrap" fxLayout.lt-md="column">
+      <div class="footer-box" fxFlex="33">
+        <h4>Sobre Nós</h4>
+        <p>
+          Somos um produto Next Opinion que nasceu com o intuito de dar a você, imobiliário, a oportunidade de realmente
+          se tornar o protagonista
+          do seu negócio e ter as ferramentas que necessita para se destacar nos meios digitais, pois acreditamos que as
+          ferramentas corretas,
+          uma presença digital acertada e uma vitrine chamativa são, atualmente, as principais formas de angariar cada
+          vez mais leads a um baixo custo e
+          convertê-los em clientes satisfeitos.
+        </p>
+      </div>
+
+      <div class="footer-box" fxFlex="33">
+        <h4 class="m-0">Contato</h4>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-avatar color="accent">email</mat-icon>
+            <h5 mat-line>Email</h5>
+            <p mat-line>atendimento@nexthome.pt</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon mat-list-avatar color="accent">location_on</mat-icon>
+            <h5 mat-line>Endereço 1</h5>
+            <p mat-line>Óbidos - Portugal</p>
+            <p mat-line>Parque Tecnológico de Óbidos</p>
+            <p mat-line>Rua da Criatividade, 2510-216</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon mat-list-avatar color="accent">location_on</mat-icon>
+            <h5 mat-line>Endereço 2</h5>
+            <p mat-line>Maceió - Brasil</p>
+            <p mat-line>Edifício Record Office, 101</p>
+            <p mat-line>R. Eng. Mário de Gusmão</p>
+            <p mat-line>Nº 988, CEP 57.035.000</p>
+            <p mat-line>Ponta Verde, Maceió/AL - Brasil</p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="footer-box" fxFlex="33">
+        <h4>Redes Sociais</h4>
+        <p>
+          Nos siga nas redes sociais! Temos vários conteúdos sobre a indústria imobiliária. Falamos de inovações,
+          tecnologias, notícias e tendências desse mundo.
+        </p>
+        <div class="socials pt-1">
+          <ul>
+            <li><a class="social-icon linkedin" href=""></a></li>
+            <li><a class="social-icon twitter" href=""></a></li>
+            <li><a class="social-icon facebook" href=""></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

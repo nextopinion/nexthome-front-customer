@@ -1,3 +1,5 @@
+@import "src/assets/stylesheets/theming";
+
 mat-toolbar {
   position: relative;
   background: white;
@@ -9,5 +11,112 @@ section {
 
   &#search {
     background: #eef;
+  }
+
+  &#top-properties {
+    div.title {
+      font-size: 1.25rem;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      ::ng-deep mat-form-field.filter-city {
+        display: inline-block;
+        margin-left: 12px;
+
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
+
+          .mat-form-field-underline {
+            bottom: 0;
+          }
+
+          .mat-form-field-flex {
+            padding-top: 0;
+
+            .mat-form-field-infix {
+              border: 0;
+              padding: 0.5em 0;
+
+              .mat-select-arrow-wrapper {
+                transform: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #212121;
+
+  .footer-box {
+    padding: 32px;
+    color: #fff !important;
+
+    mat-list-item {
+      color: white;
+    }
+
+    h4 {
+      position: relative;
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 64px;
+        background-color: mat-color($nexthome-front-accent, A200);
+      }
+    }
+
+    mat-icon {
+      height: 24px;
+      text-align: center;
+    }
+
+    h5 {
+      font-weight: bold;
+    }
+  }
+}
+
+div.socials {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+
+      a.social-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin: 8px;
+        background-size: cover !important;
+
+        &.linkedin {
+          background: url(http://angular-landing.angulardashboard.com/social-linkedin.ca0ee11f16912007c551.png) center center no-repeat;
+        }
+
+        &.twitter {
+          background: url(http://angular-landing.angulardashboard.com/social-twitter.3afd962b1d281b0af639.png) center center no-repeat;
+        }
+
+        &.facebook {
+          background: url(http://angular-landing.angulardashboard.com/social-facebook.ae5bc300b59b76118fa1.png) center center no-repeat;
+        }
+      }
+    }
   }
 }
