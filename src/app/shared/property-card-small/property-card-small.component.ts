@@ -13,4 +13,7 @@ export class PropertyCardSmallComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  navigate() {
+    window.location.replace('https://nexthome.pt/property-page/84');
+  }
 }
