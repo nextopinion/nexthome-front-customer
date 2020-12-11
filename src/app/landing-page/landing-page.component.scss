@@ -99,22 +99,16 @@ div.socials {
       display: inline-block;
 
       a.social-icon {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
+        display: flex;
+        align-items: center;
         margin: 8px;
         background-size: cover !important;
+        color: mat-color($nexthome-front-accent);
+        font-size: 28px;
 
-        &.linkedin {
-          background: url(http://angular-landing.angulardashboard.com/social-linkedin.ca0ee11f16912007c551.png) center center no-repeat;
-        }
-
-        &.twitter {
-          background: url(http://angular-landing.angulardashboard.com/social-twitter.3afd962b1d281b0af639.png) center center no-repeat;
-        }
-
-        &.facebook {
-          background: url(http://angular-landing.angulardashboard.com/social-facebook.ae5bc300b59b76118fa1.png) center center no-repeat;
+        span.label {
+          font-size: 18px;
+          margin-left: 8px;
         }
       }
     }
