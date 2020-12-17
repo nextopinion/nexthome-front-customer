@@ -17,6 +17,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyCardSmallComponent } from './shared/property-card-small/property-card-small.component';
 import { MatListModule } from '@angular/material/list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatListModule } from '@angular/material/list';
     MatSelectModule,
     MatAutocompleteModule,
     MatListModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
