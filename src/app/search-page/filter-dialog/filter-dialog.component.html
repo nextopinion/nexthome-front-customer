@@ -1,0 +1,32 @@
+<div mat-dialog-title fxLayout="row">
+  <h1 fxFlex="grow">Filtros</h1>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div id="filters" mat-dialog-content fxLayout="column" fxLayoutGap="8px">
+  <div fxLayout="row" fxFlexAlign="center">
+    <mat-button-toggle-group [(ngModel)]="searchParams.negotiation_type" [ngModelOptions]="{standalone: true}">
+      <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
+      <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
+      <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de Imóvel</mat-label>
+      <mat-select>
+        <mat-option value="casa">Casa</mat-option>
+        <mat-option value="apartamento">Apartamento</mat-option>
+        <mat-option value="comercial">Comercial</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="clear()">Limpar</button>
+  <button mat-stroked-button [mat-dialog-close]="true" color="primary" (click)="submit()">Aplicar</button>
+</div>

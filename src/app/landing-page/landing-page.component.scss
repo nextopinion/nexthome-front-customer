@@ -1,11 +1,5 @@
 @import "src/assets/stylesheets/theming";
 
-mat-toolbar {
-  position: relative;
-  background: white;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-}
-
 section {
   padding: 32px;
 
@@ -19,32 +13,6 @@ section {
       display: flex;
       flex-direction: row;
       width: 100%;
-
-      ::ng-deep mat-form-field.filter-city {
-        display: inline-block;
-        margin-left: 12px;
-
-        .mat-form-field-wrapper {
-          padding-bottom: 0;
-
-          .mat-form-field-underline {
-            bottom: 0;
-          }
-
-          .mat-form-field-flex {
-            padding-top: 0;
-
-            .mat-form-field-infix {
-              border: 0;
-              padding: 0.5em 0;
-
-              .mat-select-arrow-wrapper {
-                transform: none;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

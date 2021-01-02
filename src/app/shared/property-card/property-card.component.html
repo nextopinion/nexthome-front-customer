@@ -1,0 +1,75 @@
+<mat-card class="property-card">
+  <div fxLayout="row" fxLayout.lt-md="column">
+    <img mat-card-image class="preview clickable" [class.fixed-width]="(isHandset$ | async) === false"
+         [routerLink]="['/property-page', property.id]"
+         [src]="property.images[0].image"/>
+
+    <div fxFlex="100" fxLayout="column" class="p-24">
+      <div fxLayout="row" class="align-items-center">
+        <div fxLayout="column" fxFlex="grow">
+          <span class="property-name clickable">{{ property.name }}</span>
+          <span class="price clickable" [routerLink]="['/property-page', property.id]">
+            <span class="variable-price-disclaimer" *ngIf="property.variable_price">A partir de</span>
+            {{ property.price | currency:'BRL' }}
+          </span>
+        </div>
+      </div>
+      <span class="extra-expanses">
+        <span *ngIf="property.condominium_price">Condomínio {{ property.condominium_price | currency:'BRL'}}</span>
+        <span *ngIf="property.iptu_price">IPTU {{ property.iptu_price | currency:'BRL'}}</span>
+      </span>
+      <span class="description clickable" [routerLink]="['/property-page', property.id]">
+        {{ property.description}}
+      </span>
+      <div class="footer" fxLayout="row" fxLayout.lt-sm="column">
+        <div fxLayout="column" fxFlex="100">
+          <span class="address">
+            <mat-icon>location_on</mat-icon>
+            {{ property.address.city }} - {{ property.address.state }}, {{ property.address.neighborhood }}
+          </span>
+          <div class="features">
+            <ng-container *ngIf="property.total_area; then totalArea;
+             else (property.private_area ? privateArea : constructedArea)">
+            </ng-container>
+
+            <ng-template #totalArea>
+              <span [matTooltip]="'Área Total'">
+                {{ property.total_area | number:'':'pt-BR' }} m²
+              </span>
+            </ng-template>
+
+            <ng-template #privateArea>
+              <span [matTooltip]="'Área Privativa'">
+                {{ property.private_area | number:'':'pt-BR' }} m²
+              </span>
+            </ng-template>
+
+            <ng-template #constructedArea>
+              <span [matTooltip]="'Área Construída'" *ngIf="property.constructed_area">
+                {{ property.constructed_area | number:'':'pt-BR' }} m²
+              </span>
+            </ng-template>
+
+
+            <span [matTooltip]="'Quartos'" *ngIf="property.rooms">
+              <mat-icon>single_bed</mat-icon>
+              {{ property.rooms }}
+            </span>
+            <span [matTooltip]="'Suítes'" *ngIf="property.suites">
+              <mat-icon>king_bed</mat-icon>
+              {{ property.suites }}
+            </span>
+            <span [matTooltip]="'Banheiros'" *ngIf="property.bathrooms">
+              <mat-icon>bathtub</mat-icon>
+              {{ property.bathrooms }}
+            </span>
+            <span [matTooltip]="'Vagas de Garagem'" *ngIf="property.parking_spots">
+              <mat-icon>directions_car</mat-icon>
+              {{ property.parking_spots }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

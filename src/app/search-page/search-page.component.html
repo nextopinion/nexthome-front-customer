@@ -1,0 +1,70 @@
+<div class="container">
+  <mat-toolbar id="toolbarSearch" fxLayout="row" fxLayoutGap="12px">
+    <a class="logo" href="/">
+      <img src="assets/images/Favicon/favicon32px.png"/>
+    </a>
+
+    <mat-form-field appearance="fill" fxFlex="grow" fxFlex.gt-sm="30%">
+      <mat-icon matPrefix>search</mat-icon>
+
+      <input matInput type="text" placeholder="{{ searchParams.city || 'Cidade, estado...' }}"
+             [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
+
+      <button mat-button *ngIf="searchParams.city" matSuffix mat-icon-button aria-label="Clear"
+              (click)="searchParams.city=''">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of cityOptions" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div fxLayout="row" fxHide.lt-sm="true">
+      <mat-button-toggle-group [(ngModel)]="searchParams.negotiation_type" [ngModelOptions]="{standalone: true}">
+        <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
+        <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
+        <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="spacer" fxHide.lt-md="true"></div>
+
+    <div>
+      <button mat-stroked-button (click)="openFilterDialog()">
+        <mat-icon>tune</mat-icon>
+        <span fxHide.lt-sm="true">Filtrar</span>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="summary-text text-muted p-16" fxLayout="row">
+    <div>
+      <div>Imóveis para <span class="text-normal font-emphasis">alugar</span> em</div>
+      <div class="text-normal font-emphasis">São paulo, SP</div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <mat-form-field id="searchSortBy" class="custom-select" appearance="fill">
+      <mat-select [ngModel]="sortBy">
+        <mat-option value="RELEVANT">Mais relevantes</mat-option>
+        <mat-option value="RECENT">Mais recentes</mat-option>
+        <mat-option value="MIN_COST">Menor custo</mat-option>
+        <mat-option value="MAX_COST">Maior custo</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="search-results" fxLayout="column" fxLayoutGap="12px">
+    <!--      <p class="text-center" *ngIf="properties?.length === 0">Não há imóveis cadastrados.</p>-->
+
+    <app-property-card [property]="property" *ngFor="let property of searchData.results">
+    </app-property-card>
+  </div>
+
+  <mat-paginator [hidePageSize]="true" [pageSize]="10" [length]="searchData.count"
+                 (page)="doSearch($event.pageIndex + 1)"></mat-paginator>
+</div>

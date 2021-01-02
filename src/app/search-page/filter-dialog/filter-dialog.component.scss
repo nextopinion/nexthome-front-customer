@@ -1,0 +1,12 @@
+h1 {
+  margin: 0;
+  font: inherit;
+}
+
+::ng-deep {
+  div#filters {
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      padding: 0;
+    }
+  }
+}

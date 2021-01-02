@@ -1,19 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SearchParams } from '../shared/models/SearchParams';
+import { getSearchParamsToRoute } from '../shared/util';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
 
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  searchParams: SearchParams;
+  searchFormGroup: FormGroup;
+  cityOptions: string[] = ['One', 'Two', 'Three'];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
+    this.searchParams = new SearchParams('SELL');
+    this.searchFormGroup = this.formBuilder.group({
+      negotiation_type: ['SELL'],
+      city: [''],
+      neighborhood: [''],
+      price: [0],
+      rooms: [0]
+    });
   }
 
+  goToSearchPage() {
+    this.router.navigate(['/search', getSearchParamsToRoute(this.searchParams)]);
+  }
 }

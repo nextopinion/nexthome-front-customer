@@ -1,6 +1,6 @@
 <mat-toolbar>
   <div class="flex-container">
-    <a class="logo" href="#">
+    <a class="logo" href="/">
       <img src="assets/images/Favicon/favicon32px.png"/>
       <span>NextHome</span>
     </a>
@@ -16,16 +16,24 @@
 
       <div fxLayout="row">
         <mat-card class="margin-auto">
-          <form fxLayout="column" [formGroup]="myControl">
+          <form fxLayout="column" [formGroup]="searchFormGroup">
+            <div class="pb-16" fxLayout="row" fxFlexAlign="center">
+              <mat-button-toggle-group formControlName="negotiation_type" [(ngModel)]="searchParams.negotiation_type">
+                <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
+                <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
+                <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+
             <mat-form-field appearance="outline" [floatLabel]="'always'">
               <mat-label>
                 <mat-icon matPrefix>location_on</mat-icon>
                 Cidade
               </mat-label>
-              <input matInput type="text" placeholder="Busque por cidade" [formControl]="myControl"
-                     [matAutocomplete]="auto">
+              <input matInput type="text" placeholder="Busque por cidade" formControlName="city"
+                     [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of options" [value]="option">
+                <mat-option *ngFor="let option of cityOptions" [value]="option">
                   {{option}}
                 </mat-option>
               </mat-autocomplete>
@@ -37,20 +45,21 @@
                   <mat-icon matPrefix>house</mat-icon>
                   Bairro
                 </mat-label>
-                <input matInput type="text" placeholder="Busque por bairro">
+                <input matInput type="text" placeholder="Busque por bairro" formControlName="neighborhood"
+                       [(ngModel)]="searchParams.neighborhood">
               </mat-form-field>
 
               <mat-form-field appearance="outline" [floatLabel]="'always'">
                 <mat-label>
                   <mat-icon matPrefix>attach_money</mat-icon>
-                  Aluguel até
+                  Preço até
                 </mat-label>
-                <mat-select required placeholder="Escolha o preço">
-                  <mat-option value="option">R$ 1.000</mat-option>
-                  <mat-option value="option">R$ 2.000</mat-option>
-                  <mat-option value="option">R$ 3.000</mat-option>
-                  <mat-option value="option">R$ 4.000</mat-option>
-                  <mat-option value="option">R$ 5.000</mat-option>
+                <mat-select placeholder="Escolha o preço" formControlName="price" [(ngModel)]="searchParams.maxPrice">
+                  <mat-option value="1000">R$ 1.000</mat-option>
+                  <mat-option value="2000">R$ 2.000</mat-option>
+                  <mat-option value="3000">R$ 3.000</mat-option>
+                  <mat-option value="4000">R$ 4.000</mat-option>
+                  <mat-option value="5000">R$ 5.000</mat-option>
                 </mat-select>
               </mat-form-field>
 
@@ -59,18 +68,20 @@
                   <mat-icon matPrefix>single_bed</mat-icon>
                   Quartos
                 </mat-label>
-                <mat-select required placeholder="Nº de quartos">
-                  <mat-option value="option">1+</mat-option>
-                  <mat-option value="option">2+</mat-option>
-                  <mat-option value="option">3+</mat-option>
-                  <mat-option value="option">4+</mat-option>
-                  <mat-option value="option">5+</mat-option>
+                <mat-select placeholder="Nº de quartos" formControlName="rooms" [(ngModel)]="searchParams.minRooms">
+                  <mat-option value="1">1+</mat-option>
+                  <mat-option value="2">2+</mat-option>
+                  <mat-option value="3">3+</mat-option>
+                  <mat-option value="4">4+</mat-option>
+                  <mat-option value="5">5+</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="center">
-              <button mat-flat-button color="primary" fxFlex="50%">Encontrar imóveis</button>
+              <button mat-flat-button color="primary" fxFlex="50%" (click)="goToSearchPage()">
+                Encontrar imóveis
+              </button>
             </div>
           </form>
         </mat-card>
@@ -84,7 +95,7 @@
     <div class="title mb-16">
       <span class="align-self-center">Ver imóveis mais recentes em</span>
 
-      <mat-form-field appearance="fill" class="filter-city">
+      <mat-form-field appearance="fill" class="custom-select">
         <mat-select [ngModel]="'Maceió'">
           <mat-option value="Maceió">Maceió</mat-option>
           <mat-option value="São Paulo">São Paulo</mat-option>
