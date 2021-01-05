@@ -1,26 +1,30 @@
 <mat-card class="property-card">
   <div fxLayout="row" fxLayout.lt-md="column">
-    <img mat-card-image class="preview clickable" [class.fixed-width]="(isHandset$ | async) === false"
-         [routerLink]="['/property-page', property.id]"
-         [src]="property.images[0].image"/>
+    <a href="https://nexthome.pt/property-page/84">
+      <img mat-card-image class="preview clickable" [class.fixed-width]="(isHandset$ | async) === false"
+           [src]="property.images[0].image"/>
+    </a>
 
     <div fxFlex="100" fxLayout="column" class="p-24">
       <div fxLayout="row" class="align-items-center">
         <div fxLayout="column" fxFlex="grow">
-          <span class="property-name clickable">{{ property.name }}</span>
-          <span class="price clickable" [routerLink]="['/property-page', property.id]">
+          <a class="property-name clickable" href="https://nexthome.pt/property-page/84">
+            {{ property.name }}
+          </a>
+
+          <a class="price clickable" href="https://nexthome.pt/property-page/84">
             <span class="variable-price-disclaimer" *ngIf="property.variable_price">A partir de</span>
             {{ property.price | currency:'BRL' }}
-          </span>
+          </a>
         </div>
       </div>
       <span class="extra-expanses">
         <span *ngIf="property.condominium_price">Condomínio {{ property.condominium_price | currency:'BRL'}}</span>
         <span *ngIf="property.iptu_price">IPTU {{ property.iptu_price | currency:'BRL'}}</span>
       </span>
-      <span class="description clickable" [routerLink]="['/property-page', property.id]">
-        {{ property.description}}
-      </span>
+      <a class="description clickable" href="https://nexthome.pt/property-page/84">
+        {{ property.description }}
+      </a>
       <div class="footer" fxLayout="row" fxLayout.lt-sm="column">
         <div fxLayout="column" fxFlex="100">
           <span class="address">
