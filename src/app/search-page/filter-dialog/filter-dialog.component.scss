@@ -1,9 +1,18 @@
 h1 {
-  margin: 0;
+  margin-top: 0;
   font: inherit;
 }
 
+div#filters {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 ::ng-deep {
+  div#dialog-title {
+    margin-top: -8px !important;
+  }
+
   div#filters {
     .mat-form-field-appearance-outline .mat-form-field-wrapper {
       padding: 0;

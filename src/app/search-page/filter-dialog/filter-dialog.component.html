@@ -1,12 +1,12 @@
-<div mat-dialog-title fxLayout="row">
+<div id="dialog-title" mat-dialog-title fxLayout="row">
   <h1 fxFlex="grow">Filtros</h1>
   <button mat-icon-button (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
 </div>
 
-<div id="filters" mat-dialog-content fxLayout="column" fxLayoutGap="8px">
-  <div fxLayout="row" fxFlexAlign="center">
+<div id="filters" mat-dialog-content fxLayout="column">
+  <div class="pt-16" fxLayout="row" fxFlexAlign="center">
     <mat-button-toggle-group [(ngModel)]="searchParams.negotiation_type" [ngModelOptions]="{standalone: true}">
       <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
       <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
@@ -14,15 +14,115 @@
     </mat-button-toggle-group>
   </div>
 
+  <div class="pb-16">
+    <h4>Valor</h4>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px">
+      <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
+        <mat-label>Mínimo R$ 500,00</mat-label>
+        <input matInput type="number" placeholder="500,00">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
+        <mat-label>Máximo R$ 20.000,00</mat-label>
+        <input matInput type="number" placeholder="20.000,00">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="pb-16">
+    <h4>Tipos de Imóveis</h4>
+    <div class="justify-space-between" fxLayout="row wrap" fxLayoutGap="16px">
+      <mat-checkbox>Casa</mat-checkbox>
+      <mat-checkbox>Apartamento</mat-checkbox>
+      <mat-checkbox>Comercial</mat-checkbox>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="pb-16">
+    <h4>Detalhes</h4>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px">
+      <mat-form-field appearance="outline">
+        <mat-label>Quartos</mat-label>
+        <mat-select>
+          <mat-option value="1">1+</mat-option>
+          <mat-option value="2">2+</mat-option>
+          <mat-option value="3">3+</mat-option>
+          <mat-option value="4">4+</mat-option>
+          <mat-option value="5">5+</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Suítes</mat-label>
+        <mat-select>
+          <mat-option value="1">1+</mat-option>
+          <mat-option value="2">2+</mat-option>
+          <mat-option value="3">3+</mat-option>
+          <mat-option value="4">4+</mat-option>
+          <mat-option value="5">5+</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Banheiros</mat-label>
+        <mat-select>
+          <mat-option value="1">1+</mat-option>
+          <mat-option value="2">2+</mat-option>
+          <mat-option value="3">3+</mat-option>
+          <mat-option value="4">4+</mat-option>
+          <mat-option value="5">5+</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Vagas de garagem</mat-label>
+        <mat-select>
+          <mat-option value="1">1+</mat-option>
+          <mat-option value="2">2+</mat-option>
+          <mat-option value="3">3+</mat-option>
+          <mat-option value="4">4+</mat-option>
+          <mat-option value="5">5+</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
   <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Tipo de Imóvel</mat-label>
-      <mat-select>
-        <mat-option value="casa">Casa</mat-option>
-        <mat-option value="apartamento">Apartamento</mat-option>
-        <mat-option value="comercial">Comercial</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <h4>Diferenciais</h4>
+
+    <div class="justify-space-between" fxLayout.lt-sm="column" fxLayout="row">
+      <div fxLayout="column">
+        <mat-checkbox color="primary">Elevador</mat-checkbox>
+        <mat-checkbox color="primary">Interfone</mat-checkbox>
+        <mat-checkbox color="primary">Mobiliado</mat-checkbox>
+        <mat-checkbox color="primary">Sauna</mat-checkbox>
+        <mat-checkbox color="primary">Piscina</mat-checkbox>
+      </div>
+
+      <div fxLayout="column">
+        <mat-checkbox color="primary">Churrasqueira</mat-checkbox>
+        <mat-checkbox color="primary">Varanda</mat-checkbox>
+        <mat-checkbox color="primary">Portaria 24h</mat-checkbox>
+        <mat-checkbox color="primary">Salão de festas</mat-checkbox>
+        <mat-checkbox color="primary">Quadra esportiva</mat-checkbox>
+      </div>
+
+      <div fxLayout="column">
+        <mat-checkbox color="primary">Cozinha americana</mat-checkbox>
+        <mat-checkbox color="primary">Academia</mat-checkbox>
+        <mat-checkbox color="primary">Playground</mat-checkbox>
+        <mat-checkbox color="primary">Próximo a shopping</mat-checkbox>
+        <mat-checkbox color="primary">Próximo a bares</mat-checkbox>
+      </div>
+    </div>
   </div>
 </div>
 

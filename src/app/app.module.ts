@@ -28,6 +28,8 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { getPortuguesePaginatorIntl } from './portuguese-paginator-intl';
 import { FilterDialogComponent } from './search-page/filter-dialog/filter-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatRadioModule } from "@angular/material/radio";
 
 registerLocaleData(ptBr);
 
@@ -61,7 +63,9 @@ registerLocaleData(ptBr);
     MatButtonToggleModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
