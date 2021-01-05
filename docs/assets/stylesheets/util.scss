@@ -26,6 +26,10 @@
   align-items: center;
 }
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
 .text-bold {
   font-weight: bold !important;
 }
@@ -46,12 +50,20 @@
   color: rgba(0, 0, 0, .54) !important;
 }
 
+.text-normal {
+  color: rgba(0, 0, 0, 0.87);
+}
+
 .text-muted-white {
   color: rgba(255, 255, 255, .54) !important;
 }
 
 .font-light {
   font-weight: 300 !important;
+}
+
+.font-emphasis {
+  font-weight: 500;
 }
 
 .m-0 {
