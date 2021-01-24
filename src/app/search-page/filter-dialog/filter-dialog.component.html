@@ -7,7 +7,7 @@
 
 <div id="filters" mat-dialog-content fxLayout="column">
   <div class="pt-16" fxLayout="row" fxFlexAlign="center">
-    <mat-button-toggle-group [(ngModel)]="searchParams.negotiation_type" [ngModelOptions]="{standalone: true}">
+    <mat-button-toggle-group [(ngModel)]="searchParams.negotiationType" [ngModelOptions]="{standalone: true}">
       <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
       <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
       <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>
@@ -20,12 +20,12 @@
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px">
       <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
         <mat-label>Mínimo R$ 500,00</mat-label>
-        <input matInput type="number" placeholder="500,00">
+        <input matInput type="number" placeholder="500,00" [(ngModel)]="searchParams.minPrice">
       </mat-form-field>
 
       <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
         <mat-label>Máximo R$ 20.000,00</mat-label>
-        <input matInput type="number" placeholder="20.000,00">
+        <input matInput type="number" placeholder="20.000,00" [(ngModel)]="searchParams.maxPrice">
       </mat-form-field>
     </div>
   </div>
@@ -35,9 +35,9 @@
   <div class="pb-16">
     <h4>Tipos de Imóveis</h4>
     <div class="justify-space-between" fxLayout="row wrap" fxLayoutGap="16px">
-      <mat-checkbox>Casa</mat-checkbox>
-      <mat-checkbox>Apartamento</mat-checkbox>
-      <mat-checkbox>Comercial</mat-checkbox>
+      <mat-checkbox [(ngModel)]="searchParams.house">Casa</mat-checkbox>
+      <mat-checkbox [(ngModel)]="searchParams.apartment">Apartamento</mat-checkbox>
+      <mat-checkbox [(ngModel)]="searchParams.commercial">Comercial</mat-checkbox>
     </div>
   </div>
 
@@ -100,27 +100,27 @@
 
     <div class="justify-space-between" fxLayout.lt-sm="column" fxLayout="row">
       <div fxLayout="column">
-        <mat-checkbox color="primary">Elevador</mat-checkbox>
-        <mat-checkbox color="primary">Interfone</mat-checkbox>
-        <mat-checkbox color="primary">Mobiliado</mat-checkbox>
-        <mat-checkbox color="primary">Sauna</mat-checkbox>
-        <mat-checkbox color="primary">Piscina</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.elevator">Elevador</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.interphone">Interfone</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.furniture">Mobiliado</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.sauna">Sauna</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.pool">Piscina</mat-checkbox>
       </div>
 
       <div fxLayout="column">
-        <mat-checkbox color="primary">Churrasqueira</mat-checkbox>
-        <mat-checkbox color="primary">Varanda</mat-checkbox>
-        <mat-checkbox color="primary">Portaria 24h</mat-checkbox>
-        <mat-checkbox color="primary">Salão de festas</mat-checkbox>
-        <mat-checkbox color="primary">Quadra esportiva</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.barbecueGrill">Churrasqueira</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.balcony">Varanda</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.concierge">Portaria 24h</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.partyRoom">Salão de festas</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.sportsCourt">Quadra esportiva</mat-checkbox>
       </div>
 
       <div fxLayout="column">
-        <mat-checkbox color="primary">Cozinha americana</mat-checkbox>
-        <mat-checkbox color="primary">Academia</mat-checkbox>
-        <mat-checkbox color="primary">Playground</mat-checkbox>
-        <mat-checkbox color="primary">Próximo a shopping</mat-checkbox>
-        <mat-checkbox color="primary">Próximo a bares</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.americanKitchen">Cozinha americana</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.gym">Academia</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.playground">Playground</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.nearMall">Próximo a shopping</mat-checkbox>
+        <mat-checkbox color="primary" [(ngModel)]="searchParams.nearBars">Próximo a bares</mat-checkbox>
       </div>
     </div>
   </div>

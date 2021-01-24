@@ -1,7 +1,7 @@
 import { SearchParams } from './models/SearchParams';
 
 
-export function getSearchParamsToRoute(searchParams: SearchParams): SearchParams {
+export function getOnlyDefinedSearchParams(searchParams: SearchParams): SearchParams {
   const params = new SearchParams();
 
   console.log(searchParams);
@@ -13,4 +13,12 @@ export function getSearchParamsToRoute(searchParams: SearchParams): SearchParams
   }
 
   return params;
+}
+
+export function camelToSnakeCase(str: string) {
+  return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+}
+
+export function capitalizeFirstLetter(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

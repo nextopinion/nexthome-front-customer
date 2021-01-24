@@ -18,7 +18,7 @@
         <mat-card class="margin-auto">
           <form fxLayout="column" [formGroup]="searchFormGroup">
             <div class="pb-16" fxLayout="row" fxFlexAlign="center">
-              <mat-button-toggle-group formControlName="negotiation_type" [(ngModel)]="searchParams.negotiation_type">
+              <mat-button-toggle-group formControlName="negotiation_type" [(ngModel)]="searchParams.negotiationType">
                 <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
                 <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
                 <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>

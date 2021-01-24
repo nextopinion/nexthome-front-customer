@@ -23,34 +23,26 @@
     </mat-form-field>
 
     <div fxLayout="row" fxHide.lt-sm="true">
-      <mat-button-toggle-group [(ngModel)]="searchParams.negotiation_type" [ngModelOptions]="{standalone: true}">
+      <mat-button-toggle-group [(ngModel)]="searchParams.negotiationType" [ngModelOptions]="{standalone: true}"
+                               (ngModelChange)="doSearch()">
         <mat-button-toggle value="RENTAL">Alugar</mat-button-toggle>
         <mat-button-toggle value="SELL">Comprar</mat-button-toggle>
         <mat-button-toggle value="SEASON">Temporada</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
-
-    <div class="spacer" fxHide.lt-md="true"></div>
-
-    <div>
-      <button mat-stroked-button (click)="openFilterDialog()">
-        <mat-icon>tune</mat-icon>
-        <span fxHide.lt-sm="true">Filtrar</span>
-      </button>
-    </div>
   </mat-toolbar>
 
   <div class="summary-text text-muted p-16" fxLayout="row">
-    <div>
-      <div>Imóveis para <span class="text-normal font-emphasis">alugar</span> em</div>
-      <div class="text-normal font-emphasis">São paulo, SP</div>
-    </div>
+    <button mat-stroked-button (click)="openFilterDialog()">
+      <mat-icon>tune</mat-icon>
+      <span>Filtrar</span>
+    </button>
 
     <div class="spacer"></div>
 
     <mat-form-field id="searchSortBy" class="custom-select" appearance="fill">
-      <mat-select [ngModel]="sortBy">
-        <mat-option value="RELEVANT">Mais relevantes</mat-option>
+      <mat-select [(ngModel)]="sortBy" (ngModelChange)="doSearch()">
+        <!--        <mat-option value="RELEVANT">Mais relevantes</mat-option>-->
         <mat-option value="RECENT">Mais recentes</mat-option>
         <mat-option value="MIN_COST">Menor custo</mat-option>
         <mat-option value="MAX_COST">Maior custo</mat-option>
@@ -59,12 +51,20 @@
   </div>
 
   <div class="search-results" fxLayout="column" fxLayoutGap="12px">
-    <!--      <p class="text-center" *ngIf="properties?.length === 0">Não há imóveis cadastrados.</p>-->
+    <mat-spinner *ngIf="loading"></mat-spinner>
 
-    <app-property-card [property]="property" *ngFor="let property of searchData.results">
+    <p class="text-center" *ngIf="!loading && !searchData">
+      Algo deu errado. <a class="retry" (click)="doSearch()">Tentar novamente</a>.
+    </p>
+
+    <p class="text-center" *ngIf="!loading && searchData?.results.length === 0">Nenhum imóvel encontrado.</p>
+
+    <app-property-card *ngFor="let property of searchData?.results"
+                       [property]="property">
     </app-property-card>
   </div>
 
-  <mat-paginator [hidePageSize]="true" [pageSize]="10" [length]="searchData.count"
-                 (page)="doSearch($event.pageIndex + 1)"></mat-paginator>
+  <mat-paginator [hidePageSize]="true" [pageSize]="10" [length]="searchData?.count"
+                 (page)="doSearch($event.pageIndex + 1)">
+  </mat-paginator>
 </div>

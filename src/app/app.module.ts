@@ -27,9 +27,11 @@ import ptBr from '@angular/common/locales/pt';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { getPortuguesePaginatorIntl } from './portuguese-paginator-intl';
 import { FilterDialogComponent } from './search-page/filter-dialog/filter-dialog.component';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatRadioModule } from "@angular/material/radio";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 registerLocaleData(ptBr);
 
@@ -65,7 +67,9 @@ registerLocaleData(ptBr);
     MatPaginatorModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

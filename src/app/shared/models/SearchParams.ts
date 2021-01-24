@@ -1,20 +1,39 @@
 export class SearchParams {
-  negotiation_type: string;
+  negotiationType: string;
   city: string;
   neighborhood: string;
+  minPrice: number;
   maxPrice: number;
   minRooms: number;
+  elevator: boolean;
+  interphone: boolean;
+  nearMall: boolean;
+  nearBars: boolean;
+  pool: boolean;
+  partyRoom: boolean;
+  americanKitchen: boolean;
+  sportsCourt: boolean;
+  furniture: boolean;
+  barbecueGrill: boolean;
+  balcony: boolean;
+  concierge: boolean;
+  gym: boolean;
+  playground: boolean;
+  sauna: boolean;
+  house: boolean;
+  apartment: boolean;
+  commercial: boolean;
 
-  constructor(negotiation_type = 'SELL') {
-    this.negotiation_type = negotiation_type;
+  constructor() {
+    this.negotiationType = 'SELL';
   }
 
   static fromRouteParams(params: SearchParams) {
-    const searchParams = new SearchParams(params.negotiation_type);
-    searchParams.city = params.city;
-    searchParams.neighborhood = params.neighborhood;
-    searchParams.maxPrice = params.maxPrice;
-    searchParams.minRooms = params.minRooms;
+    const searchParams = new SearchParams();
+
+    for (const key of Object.keys(params)) {
+      searchParams[key] = params[key];
+    }
 
     return searchParams;
   }

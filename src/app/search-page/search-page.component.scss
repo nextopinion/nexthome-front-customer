@@ -1,3 +1,5 @@
+@import '~src/assets/stylesheets/theming';
+
 mat-toolbar#toolbarSearch {
   background-color: white;
   height: 56px;
@@ -20,6 +22,24 @@ mat-toolbar#toolbarSearch {
     overflow: auto;
     flex: 1;
     padding: 16px;
+
+    a.retry {
+      color: mat-color($nexthome-front-primary);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    mat-spinner {
+      margin: auto;
+    }
+
+    app-property-card {
+      width: 100%;
+    }
+  }
+
+  mat-paginator {
+    border-top: 1px solid #ccc;
   }
 }
 

@@ -97,9 +97,9 @@ export class Property {
   }
 
   getPropertyType(): string {
-    if (this.property_type === 'casa') {
+    if (this.property_type === 'HOUSE') {
       return 'Casa';
-    } else if (this.property_type === 'apartamento') {
+    } else if (this.property_type === 'APARTMENT') {
       return 'Apartamento';
     }
     return 'Comercial';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchParams } from '../shared/models/SearchParams';
-import { getSearchParamsToRoute } from '../shared/util';
+import { getOnlyDefinedSearchParams } from '../shared/util';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,7 +16,7 @@ export class LandingPageComponent {
   cityOptions: string[] = ['One', 'Two', 'Three'];
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.searchParams = new SearchParams('SELL');
+    this.searchParams = new SearchParams();
     this.searchFormGroup = this.formBuilder.group({
       negotiation_type: ['SELL'],
       city: [''],
@@ -27,6 +27,6 @@ export class LandingPageComponent {
   }
 
   goToSearchPage() {
-    this.router.navigate(['/search', getSearchParamsToRoute(this.searchParams)]);
+    this.router.navigate(['/search', getOnlyDefinedSearchParams(this.searchParams)]);
   }
 }
