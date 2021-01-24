@@ -1,10 +1,12 @@
 export class SearchParams {
   negotiationType: string;
   city: string;
-  neighborhood: string;
   minPrice: number;
   maxPrice: number;
-  minRooms: number;
+  rooms: number;
+  suites: number;
+  bathrooms: number;
+  parkingSpots: number;
   elevator: boolean;
   interphone: boolean;
   nearMall: boolean;

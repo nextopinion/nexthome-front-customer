@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SearchParams } from './models/SearchParams';
+import { SearchParams } from './models/search-params';
 import { environment } from '../../environments/environment';
 import { camelToSnakeCase, capitalizeFirstLetter } from './util';
 import { Property } from './models/property.model';

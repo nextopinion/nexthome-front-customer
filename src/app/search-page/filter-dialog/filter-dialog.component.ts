@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { SearchParams } from '../../shared/models/SearchParams';
+import { SearchParams } from '../../shared/models/search-params';
 import { Router } from '@angular/router';
 import { getOnlyDefinedSearchParams } from '../../shared/util';
 
@@ -20,13 +20,13 @@ export class FilterDialogComponent {
   }
 
   submit() {
-    console.log('submit', this, this.searchParams);
-    this.router.navigate(['/search', getOnlyDefinedSearchParams(this.searchParams)]);
+    console.log('submit', this.searchParams);
+    this.router.navigate(['/search', getOnlyDefinedSearchParams(this.searchParams)]).then();
     this.close();
   }
 
   clear() {
-    this.router.navigate(['/search', getOnlyDefinedSearchParams(new SearchParams())]);
+    this.router.navigate(['/search', getOnlyDefinedSearchParams(new SearchParams())]).then();
     this.close();
   }
 }

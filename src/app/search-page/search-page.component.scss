@@ -72,6 +72,13 @@ mat-toolbar#toolbarSearch {
     }
   }
 
+  mat-toolbar#toolbarSearch mat-form-field {
+    .mat-form-field-suffix .mat-icon-button {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+
   mat-form-field#searchSortBy {
     .mat-form-field-flex {
       padding: 8px 12px !important;

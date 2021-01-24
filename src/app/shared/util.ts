@@ -1,4 +1,4 @@
-import { SearchParams } from './models/SearchParams';
+import { SearchParams } from './models/search-params';
 
 
 export function getOnlyDefinedSearchParams(searchParams: SearchParams): SearchParams {
@@ -7,7 +7,7 @@ export function getOnlyDefinedSearchParams(searchParams: SearchParams): SearchPa
   console.log(searchParams);
   for (const key of Object.keys(searchParams)) {
     console.log(key, searchParams[key]);
-    if (searchParams[key] !== undefined) {
+    if (searchParams[key] !== undefined && searchParams[key] !== '') {
       params[key] = searchParams[key];
     }
   }

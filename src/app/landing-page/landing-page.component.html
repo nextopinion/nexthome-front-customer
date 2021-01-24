@@ -28,9 +28,9 @@
             <mat-form-field appearance="outline" [floatLabel]="'always'">
               <mat-label>
                 <mat-icon matPrefix>location_on</mat-icon>
-                Cidade
+                Localização
               </mat-label>
-              <input matInput type="text" placeholder="Busque por cidade" formControlName="city"
+              <input matInput type="text" placeholder="Busque por estado ou cidade" formControlName="city"
                      [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of cityOptions" [value]="option">
@@ -40,27 +40,18 @@
             </mat-form-field>
 
             <div fxLayout="row" fxLayoutGap="16px">
-              <mat-form-field appearance="outline" [floatLabel]="'always'">
-                <mat-label>
-                  <mat-icon matPrefix>house</mat-icon>
-                  Bairro
-                </mat-label>
-                <input matInput type="text" placeholder="Busque por bairro" formControlName="neighborhood"
-                       [(ngModel)]="searchParams.neighborhood">
+              <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
+                <mat-label>Mínimo (R$)</mat-label>
+                <input matInput [(ngModel)]="searchParams.minPrice" formControlName="minPrice"
+                       min="0" placeholder="500,00"
+                       mask="separator.2" decimalMarker="," thousandSeparator=".">
               </mat-form-field>
 
-              <mat-form-field appearance="outline" [floatLabel]="'always'">
-                <mat-label>
-                  <mat-icon matPrefix>attach_money</mat-icon>
-                  Preço até
-                </mat-label>
-                <mat-select placeholder="Escolha o preço" formControlName="price" [(ngModel)]="searchParams.maxPrice">
-                  <mat-option value="1000">R$ 1.000</mat-option>
-                  <mat-option value="2000">R$ 2.000</mat-option>
-                  <mat-option value="3000">R$ 3.000</mat-option>
-                  <mat-option value="4000">R$ 4.000</mat-option>
-                  <mat-option value="5000">R$ 5.000</mat-option>
-                </mat-select>
+              <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
+                <mat-label>Máximo (R$)</mat-label>
+                <input matInput [(ngModel)]="searchParams.maxPrice" formControlName="maxPrice"
+                       min="0" placeholder="200.000,00"
+                       mask="separator.2" decimalMarker="," thousandSeparator=".">
               </mat-form-field>
 
               <mat-form-field appearance="outline" [floatLabel]="'always'">
@@ -68,7 +59,7 @@
                   <mat-icon matPrefix>single_bed</mat-icon>
                   Quartos
                 </mat-label>
-                <mat-select placeholder="Nº de quartos" formControlName="rooms" [(ngModel)]="searchParams.minRooms">
+                <mat-select placeholder="Nº de quartos" formControlName="rooms" [(ngModel)]="searchParams.rooms">
                   <mat-option value="1">1+</mat-option>
                   <mat-option value="2">2+</mat-option>
                   <mat-option value="3">3+</mat-option>

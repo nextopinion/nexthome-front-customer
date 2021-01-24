@@ -20,12 +20,16 @@
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px">
       <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
         <mat-label>Mínimo R$ 500,00</mat-label>
-        <input matInput type="number" placeholder="500,00" [(ngModel)]="searchParams.minPrice">
+        <input matInput [(ngModel)]="searchParams.minPrice"
+               min="0" placeholder="500,00"
+               mask="separator.2" decimalMarker="," thousandSeparator=".">
       </mat-form-field>
 
       <mat-form-field appearance="outline" floatLabel="always" fxFlex="grow">
         <mat-label>Máximo R$ 20.000,00</mat-label>
-        <input matInput type="number" placeholder="20.000,00" [(ngModel)]="searchParams.maxPrice">
+        <input matInput [(ngModel)]="searchParams.maxPrice"
+               min="0" placeholder="200.000,00"
+               mask="separator.2" decimalMarker="," thousandSeparator=".">
       </mat-form-field>
     </div>
   </div>
@@ -49,7 +53,7 @@
     <div fxLayout="row wrap" fxLayoutGap="16px">
       <mat-form-field appearance="outline">
         <mat-label>Quartos</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="searchParams.rooms">
           <mat-option value="1">1+</mat-option>
           <mat-option value="2">2+</mat-option>
           <mat-option value="3">3+</mat-option>
@@ -60,7 +64,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Suítes</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="searchParams.suites">
           <mat-option value="1">1+</mat-option>
           <mat-option value="2">2+</mat-option>
           <mat-option value="3">3+</mat-option>
@@ -71,7 +75,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Banheiros</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="searchParams.bathrooms">
           <mat-option value="1">1+</mat-option>
           <mat-option value="2">2+</mat-option>
           <mat-option value="3">3+</mat-option>
@@ -82,7 +86,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Vagas de garagem</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="searchParams.parkingSpots">
           <mat-option value="1">1+</mat-option>
           <mat-option value="2">2+</mat-option>
           <mat-option value="3">3+</mat-option>

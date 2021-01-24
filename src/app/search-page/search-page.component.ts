@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchParams } from '../shared/models/SearchParams';
+import { SearchParams } from '../shared/models/search-params';
 import { Property } from '../shared/models/property.model';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,6 +25,7 @@ export class SearchPageComponent {
 
     this.route.params.subscribe(params => {
       this.searchParams = SearchParams.fromRouteParams(params as SearchParams);
+      console.log(this.searchParams);
       this.doSearch();
     });
   }

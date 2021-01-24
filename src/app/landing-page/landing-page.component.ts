@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SearchParams } from '../shared/models/SearchParams';
+import { SearchParams } from '../shared/models/search-params';
 import { getOnlyDefinedSearchParams } from '../shared/util';
 
 @Component({
@@ -20,8 +20,8 @@ export class LandingPageComponent {
     this.searchFormGroup = this.formBuilder.group({
       negotiation_type: ['SELL'],
       city: [''],
-      neighborhood: [''],
-      price: [0],
+      minPrice: [0],
+      maxPrice: [0],
       rooms: [0]
     });
   }

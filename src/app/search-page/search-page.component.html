@@ -7,7 +7,7 @@
     <mat-form-field appearance="fill" fxFlex="grow" fxFlex.gt-sm="30%">
       <mat-icon matPrefix>search</mat-icon>
 
-      <input matInput type="text" placeholder="{{ searchParams.city || 'Cidade, estado...' }}"
+      <input matInput type="text" placeholder="{{ searchParams.city || 'Buscar por cidade ou estado' }}"
              [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
 
       <button mat-button *ngIf="searchParams.city" matSuffix mat-icon-button aria-label="Clear"
