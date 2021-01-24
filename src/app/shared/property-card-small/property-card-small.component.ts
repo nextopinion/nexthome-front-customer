@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Property } from '../models/property.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-property-card-small',
@@ -7,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyCardSmallComponent implements OnInit {
 
+  @Input()
+  property: Property;
+  nextHomeSite: string;
+
   constructor() {
+    this.nextHomeSite = environment.nextHomeSite;
   }
 
   ngOnInit(): void {
-  }
-
-  navigate() {
-    window.location.replace('https://nexthome.pt/property-page/84');
   }
 }

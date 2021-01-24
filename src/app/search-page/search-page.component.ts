@@ -16,7 +16,7 @@ export class SearchPageComponent {
 
   searchParams: SearchParams;
   locationOptions: string[]; // ToDo fill with API recommendations
-  ordering: string;
+  ordering: '-created' | 'price' | '-price';
   searchData: { count: number, results: Property[] };
   loading: boolean;
   searchTimer: any;
@@ -40,6 +40,7 @@ export class SearchPageComponent {
 
 
   doSearch(page = 1) {
+    delete this.searchData;
     this.loading = true;
     this.propertySearchService.search(this.searchParams, page, this.ordering).subscribe(
       data => {

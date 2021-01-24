@@ -13,18 +13,18 @@ export class PropertySearchService {
   constructor(private http: HttpClient) {
   }
 
-  search(searchParams: SearchParams, page: number, ordering: string) {
+  search(searchParams: SearchParams, page: number, ordering: '-created' | 'price' | '-price') {
     let paramsStr = '';
 
     for (let key of Object.keys(searchParams)) {
-      if (searchParams[key] !== undefined && searchParams[key] !== 'null') {
+      if (searchParams[key] !== undefined && searchParams[key] !== 'null' && searchParams[key] !== false) {
         if (paramsStr.length) {
           paramsStr += '&';
         }
 
         let value = searchParams[key];
-        if (value === 'true' || value === 'false') {
-          value = capitalizeFirstLetter(value);
+        if (value === true) {
+          value = 'True';
 
           if (key === 'house' || key === 'apartment' || key === 'commercial') {
             value = key.toUpperCase();
@@ -38,5 +38,10 @@ export class PropertySearchService {
 
     return this.http.get<{ count: number, results: Property[] }>(`${environment.api.url}property/?${paramsStr}`
       + `&page=${page}&ordering=${ordering}`);
+  }
+
+  getRecommendations(city: string) {
+    return this.http.get<{ count: number, results: Property[] }>(`${environment.api.url}property/?city=${city}`
+      + `&page=1&ordering=-created`);
   }
 }

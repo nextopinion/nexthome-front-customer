@@ -1,6 +1,6 @@
 export class SearchParams {
   negotiationType: string;
-  city: string;
+  location: string;
   minPrice: number;
   maxPrice: number;
   rooms: number;
@@ -34,7 +34,17 @@ export class SearchParams {
     const searchParams = new SearchParams();
 
     for (const key of Object.keys(params)) {
-      searchParams[key] = params[key];
+      const value = params[key];
+
+      if (!isNaN(value)) {
+        searchParams[key] = +value;
+      } else if (value === 'false') {
+        continue;
+      } else if (value === 'true') {
+        searchParams[key] = true;
+      } else {
+        searchParams[key] = value;
+      }
     }
 
     return searchParams;

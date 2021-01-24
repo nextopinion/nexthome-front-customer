@@ -3,6 +3,7 @@ import { Property } from '../models/property.model';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-property-card',
@@ -23,7 +24,9 @@ export class PropertyCardComponent {
       map(result => result.matches),
       shareReplay()
     );
+  nextHomeSite: string;
 
   constructor(private breakpointObserver: BreakpointObserver) {
+    this.nextHomeSite = environment.nextHomeSite;
   }
 }

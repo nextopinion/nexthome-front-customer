@@ -7,11 +7,11 @@
     <mat-form-field appearance="fill" fxFlex="grow" fxFlex.gt-sm="30%">
       <mat-icon matPrefix>search</mat-icon>
 
-      <input matInput type="text" placeholder="{{ searchParams.city || 'Buscar por estado, cidade ou bairro' }}"
-             [matAutocomplete]="auto" [(ngModel)]="searchParams.city" (ngModelChange)="onChangeLocation()">
+      <input matInput type="text" placeholder="{{ searchParams.location || 'Buscar por estado, cidade ou bairro' }}"
+             [matAutocomplete]="auto" [(ngModel)]="searchParams.location" (ngModelChange)="onChangeLocation()">
 
-      <button mat-button *ngIf="searchParams.city" matSuffix mat-icon-button aria-label="Clear"
-              (click)="searchParams.city=''; doSearch()">
+      <button mat-button *ngIf="searchParams.location" matSuffix mat-icon-button aria-label="Clear"
+              (click)="searchParams.location=''; doSearch()">
         <mat-icon>close</mat-icon>
       </button>
 

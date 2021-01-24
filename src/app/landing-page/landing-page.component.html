@@ -31,10 +31,10 @@
                 Localização
               </mat-label>
               <input matInput type="text" placeholder="Busque por estado, cidade ou bairro" formControlName="city"
-                     [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
+                     [matAutocomplete]="auto" [(ngModel)]="searchParams.location">
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of cityOptions" [value]="option">
-                  {{option}}
+                <mat-option *ngFor="let option of locationOptions" [value]="option">
+                  {{ option }}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -87,20 +87,28 @@
       <span class="align-self-center">Ver imóveis mais recentes em</span>
 
       <mat-form-field appearance="fill" class="custom-select">
-        <mat-select [ngModel]="'Maceió'">
+        <mat-select [(ngModel)]="recommendationCity" (ngModelChange)="getRecommendations()">
           <mat-option value="Maceió">Maceió</mat-option>
-          <mat-option value="São Paulo">São Paulo</mat-option>
-          <mat-option value="Arapiraca">Arapiraca</mat-option>
-          <mat-option value="Rio de Janeiro">Rio de Janeiro</mat-option>
+          <mat-option value="Recife">Recife</mat-option>
+          <mat-option value="Aracajú">Aracajú</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
-    <div class="width-100" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center">
-      <app-property-card-small></app-property-card-small>
-      <app-property-card-small></app-property-card-small>
-      <app-property-card-small></app-property-card-small>
-      <app-property-card-small></app-property-card-small>
+    <div class="width-100" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="center">
+      <mat-spinner *ngIf="loadingRecommendations"></mat-spinner>
+
+      <span class="text-center mt-16" *ngIf="!loadingRecommendations && !recommendationProperties">
+        Falha ao carregar recomendações. <a class="retry" (click)="getRecommendations()">Tentar novamente</a>.
+      </span>
+
+      <span class="text-center mt-16" *ngIf="recommendationProperties && !recommendationProperties.length">
+        A cidade escolhida ainda não tem imóveis cadastrados.
+      </span>
+
+      <app-property-card-small *ngFor="let property of recommendationProperties"
+                               [property]="property">
+      </app-property-card-small>
     </div>
   </div>
 </section>

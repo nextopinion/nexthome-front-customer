@@ -1,6 +1,6 @@
 <mat-card class="property-card">
   <div fxLayout="row" fxLayout.lt-md="column">
-    <a href="https://nexthome.pt/property-page/84">
+    <a target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
       <img mat-card-image class="preview clickable" [class.fixed-width]="(isHandset$ | async) === false"
            [src]="property.images[0].image"/>
     </a>
@@ -8,11 +8,11 @@
     <div fxFlex="100" fxLayout="column" class="p-24">
       <div fxLayout="row" class="align-items-center">
         <div fxLayout="column" fxFlex="grow">
-          <a class="property-name clickable" href="https://nexthome.pt/property-page/84">
+          <a class="property-name clickable" target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
             {{ property.name }}
           </a>
 
-          <a class="price clickable" href="https://nexthome.pt/property-page/84">
+          <a class="price clickable" target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
             <span class="variable-price-disclaimer" *ngIf="property.variable_price">A partir de</span>
             {{ property.price | currency:'BRL' }}
           </a>
@@ -22,7 +22,7 @@
         <span *ngIf="property.condominium_price">Condomínio {{ property.condominium_price | currency:'BRL'}}</span>
         <span *ngIf="property.iptu_price">IPTU {{ property.iptu_price | currency:'BRL'}}</span>
       </span>
-      <a class="description clickable" href="https://nexthome.pt/property-page/84">
+      <a class="description clickable" target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
         {{ property.description }}
       </a>
       <div class="footer" fxLayout="row" fxLayout.lt-sm="column">

@@ -12,7 +12,6 @@ mat-card.property-card-small {
   border: 1px solid #e0e0e0;
   box-shadow: none !important;
   transition: box-shadow 0.3s ease-in-out;
-  cursor: pointer;
   padding: 0;
   overflow: hidden;
   width: 100%;
@@ -63,7 +62,7 @@ mat-card.property-card-small {
 
         span {
           display: inline-block;
-          margin-right: 6px;
+          margin-right: 8px;
 
           &:last-child {
             margin-right: 0;

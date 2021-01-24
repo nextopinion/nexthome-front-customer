@@ -8,11 +8,17 @@ section {
   }
 
   &#top-properties {
+    min-height: 256px;
+
     div.title {
       font-size: 1.25rem;
       display: flex;
       flex-direction: row;
       width: 100%;
+    }
+
+    app-property-card-small {
+      margin-bottom: 16px;
     }
   }
 }

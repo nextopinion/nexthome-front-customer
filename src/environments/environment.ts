@@ -8,7 +8,8 @@ export const environment = {
     url: 'http://localhost:8000/api/',
     auth: 'http://localhost:8000/auth/',
     token: 'http://localhost:8000/auth/token/',
-  }
+  },
+  nextHomeSite: 'http://localhost:4200/'
 };
 
 /*

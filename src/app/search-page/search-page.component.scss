@@ -23,12 +23,6 @@ mat-toolbar#toolbarSearch {
     flex: 1;
     padding: 16px;
 
-    a.retry {
-      color: mat-color($nexthome-front-primary);
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     mat-spinner {
       margin: auto;
     }

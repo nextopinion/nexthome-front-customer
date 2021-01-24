@@ -48,6 +48,12 @@ a.logo {
   margin: auto;
 }
 
+a.retry {
+  color: mat-color($nexthome-front-primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+
 mat-toolbar {
   position: relative;
   background: white;

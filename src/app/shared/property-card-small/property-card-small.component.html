@@ -1,24 +1,58 @@
-<mat-card class="property-card-small" (click)="navigate()">
-  <div class="preview">
-    <img src="https://www.quintoandar.com.br/img/sml/893196960-757.71109725852411CAPA.jpg"/>
-  </div>
+<a target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
+  <mat-card class="property-card-small">
+    <div class="preview">
+      <img [src]="property.images[0].image"/>
+    </div>
 
-  <div class="description">
-    <span class="type">Apartamento, Temporada</span>
-    <span class="street">Rua Desportista Cláudio da Rocha Lima</span>
-    <span class="city">Maceió - AL</span>
+    <div class="description">
+      <span class="type">{{ property.getPropertyType() }}, {{ property.getNegotiationType() }}</span>
+      <span class="street">{{ property.address.street }}</span>
+      <span class="city">{{ property.address.city }} - {{ property.address.state }}</span>
 
-    <span class="features">
-      <span>
-        <mat-icon>square_foot</mat-icon> 300 m²
+      <span class="features">
+      <span *ngIf="property.total_area || property.private_area || property.constructed_area">
+        <mat-icon>square_foot</mat-icon>
+        <ng-container *ngIf="property.total_area;
+         then totalArea; else (property.private_area ? privateArea : constructedArea)">
+        </ng-container>
+
+        <ng-template #totalArea>
+          <span [matTooltip]="'Área Total'">
+            {{ property.total_area | number:'':'pt-BR' }} m²
+          </span>
+        </ng-template>
+
+        <ng-template #privateArea>
+          <span [matTooltip]="'Área Privativa'">
+            {{ property.private_area | number:'':'pt-BR' }} m²
+          </span>
+        </ng-template>
+
+        <ng-template #constructedArea>
+          <span [matTooltip]="'Área Construída'" *ngIf="property.constructed_area">
+            {{ property.constructed_area | number:'':'pt-BR' }} m²
+          </span>
+        </ng-template>
       </span>
 
-      <span>
-        <mat-icon>single_bed</mat-icon> 10 quartos
+      <span [matTooltip]="'Quartos'" *ngIf="property.rooms">
+        <mat-icon>single_bed</mat-icon>
+        {{ property.rooms }}
+      </span>
+
+      <span [matTooltip]="'Banheiros'" *ngIf="property.bathrooms">
+        <mat-icon>bathtub</mat-icon>
+        {{ property.bathrooms }}
+      </span>
+
+      <span [matTooltip]="'Vagas de Garagem'" *ngIf="property.parking_spots">
+        <mat-icon>directions_car</mat-icon>
+        {{ property.parking_spots }}
       </span>
     </span>
 
-    <span class="price-disclaimer">A partir de</span>
-    <span class="price">R$ 10.000,00</span>
-  </div>
-</mat-card>
+      <span class="price-disclaimer" *ngIf="property.variable_price">A partir de</span>
+      <span class="price">{{ property.price | currency:'BRL' }}</span>
+    </div>
+  </mat-card>
+</a>
