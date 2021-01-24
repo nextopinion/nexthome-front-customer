@@ -12,20 +12,21 @@ import { PropertySearchService } from '../shared/property-search.service';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent {
+  SEARCH_DELAY = 500;
 
   searchParams: SearchParams;
-  cityOptions: string[] = ['One', 'Two', 'Three'];
-  sortBy: string;
+  locationOptions: string[]; // ToDo fill with API recommendations
+  ordering: string;
   searchData: { count: number, results: Property[] };
   loading: boolean;
+  searchTimer: any;
 
   constructor(private route: ActivatedRoute, private dialog: MatDialog,
               private propertySearchService: PropertySearchService) {
-    this.sortBy = 'RECENT';
+    this.ordering = '-created';
 
     this.route.params.subscribe(params => {
       this.searchParams = SearchParams.fromRouteParams(params as SearchParams);
-      console.log(this.searchParams);
       this.doSearch();
     });
   }
@@ -40,12 +41,16 @@ export class SearchPageComponent {
 
   doSearch(page = 1) {
     this.loading = true;
-    this.propertySearchService.search(this.searchParams, page).subscribe(
+    this.propertySearchService.search(this.searchParams, page, this.ordering).subscribe(
       data => {
-        console.log(data);
         this.loading = false;
         this.searchData = data;
       },
       _ => this.loading = false);
+  }
+
+  onChangeLocation() {
+    clearTimeout(this.searchTimer);
+    this.searchTimer = setTimeout(() => this.doSearch(), this.SEARCH_DELAY);
   }
 }

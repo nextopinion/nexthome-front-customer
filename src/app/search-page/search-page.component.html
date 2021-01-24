@@ -7,16 +7,16 @@
     <mat-form-field appearance="fill" fxFlex="grow" fxFlex.gt-sm="30%">
       <mat-icon matPrefix>search</mat-icon>
 
-      <input matInput type="text" placeholder="{{ searchParams.city || 'Buscar por cidade ou estado' }}"
-             [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
+      <input matInput type="text" placeholder="{{ searchParams.city || 'Buscar por estado, cidade ou bairro' }}"
+             [matAutocomplete]="auto" [(ngModel)]="searchParams.city" (ngModelChange)="onChangeLocation()">
 
       <button mat-button *ngIf="searchParams.city" matSuffix mat-icon-button aria-label="Clear"
-              (click)="searchParams.city=''">
+              (click)="searchParams.city=''; doSearch()">
         <mat-icon>close</mat-icon>
       </button>
 
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of cityOptions" [value]="option">
+        <mat-option *ngFor="let option of locationOptions" [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>
@@ -41,11 +41,10 @@
     <div class="spacer"></div>
 
     <mat-form-field id="searchSortBy" class="custom-select" appearance="fill">
-      <mat-select [(ngModel)]="sortBy" (ngModelChange)="doSearch()">
-        <!--        <mat-option value="RELEVANT">Mais relevantes</mat-option>-->
-        <mat-option value="RECENT">Mais recentes</mat-option>
-        <mat-option value="MIN_COST">Menor custo</mat-option>
-        <mat-option value="MAX_COST">Maior custo</mat-option>
+      <mat-select [(ngModel)]="ordering" (ngModelChange)="doSearch()">
+        <mat-option value="-created">Mais recentes</mat-option>
+        <mat-option value="price">Menor custo</mat-option>
+        <mat-option value="-price">Maior custo</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

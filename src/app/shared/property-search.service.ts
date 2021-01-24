@@ -13,7 +13,7 @@ export class PropertySearchService {
   constructor(private http: HttpClient) {
   }
 
-  search(searchParams: SearchParams, page: number) {
+  search(searchParams: SearchParams, page: number, ordering: string) {
     let paramsStr = '';
 
     for (let key of Object.keys(searchParams)) {
@@ -36,6 +36,7 @@ export class PropertySearchService {
       }
     }
 
-    return this.http.get<{ count: number, results: Property[] }>(`${environment.api.url}property/?${paramsStr}&page=${page}`);
+    return this.http.get<{ count: number, results: Property[] }>(`${environment.api.url}property/?${paramsStr}`
+      + `&page=${page}&ordering=${ordering}`);
   }
 }

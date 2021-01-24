@@ -30,7 +30,7 @@
                 <mat-icon matPrefix>location_on</mat-icon>
                 Localização
               </mat-label>
-              <input matInput type="text" placeholder="Busque por estado ou cidade" formControlName="city"
+              <input matInput type="text" placeholder="Busque por estado, cidade ou bairro" formControlName="city"
                      [matAutocomplete]="auto" [(ngModel)]="searchParams.city">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of cityOptions" [value]="option">

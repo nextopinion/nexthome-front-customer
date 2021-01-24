@@ -20,7 +20,6 @@ export class FilterDialogComponent {
   }
 
   submit() {
-    console.log('submit', this.searchParams);
     this.router.navigate(['/search', getOnlyDefinedSearchParams(this.searchParams)]).then();
     this.close();
   }
