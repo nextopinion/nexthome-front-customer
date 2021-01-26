@@ -70,7 +70,7 @@ mat-toolbar {
 
 mat-form-field.custom-select {
   display: inline-block;
-  margin-left: 12px;
+  max-width: 200px;
 
   .mat-form-field-wrapper {
     padding-bottom: 0;

@@ -63,7 +63,8 @@
     </app-property-card>
   </div>
 
-  <mat-paginator [hidden]="!searchData" [hidePageSize]="true" [pageSize]="10" [length]="searchData?.count"
+  <mat-paginator [class.hidden]="!searchData"
+                 [hidePageSize]="true" [pageSize]="10" [length]="searchData?.count"
                  (page)="doSearch($event.pageIndex + 1)">
   </mat-paginator>
 </div>
