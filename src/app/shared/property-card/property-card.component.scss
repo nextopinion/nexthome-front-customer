@@ -4,14 +4,13 @@
 mat-card.property-card {
   padding: 0;
   overflow: hidden;
-  //max-height: $property-card-height;
 
   img.preview {
     min-width: 350px;
     min-height: 156px;
     max-height: $property-card-height;
     object-fit: cover;
-    margin: 0;
+    margin: 0 0 -5px 0;
     cursor: pointer;
 
     &.fixed-width {
@@ -65,6 +64,11 @@ mat-card.property-card {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
+    }
+
+    &.extra-expanses + .description {
+      line-height: 28px;
+      -webkit-line-clamp: 1;
     }
 
     &.address {
