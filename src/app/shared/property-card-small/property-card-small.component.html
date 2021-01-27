@@ -1,7 +1,7 @@
 <a target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
   <mat-card class="property-card-small">
     <div class="preview">
-      <img [src]="property.images[0].image"/>
+      <img [src]="property.images[0]?.image || '/assets/images/image-placeholder.png'"/>
     </div>
 
     <div class="description">

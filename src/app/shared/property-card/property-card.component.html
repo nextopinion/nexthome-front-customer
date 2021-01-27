@@ -2,7 +2,7 @@
   <div fxLayout="row" fxLayout.lt-md="column">
     <a target="_blank" [href]="nextHomeSite + 'property-page/' + property.id">
       <img mat-card-image class="preview clickable" [class.fixed-width]="(isHandset$ | async) === false"
-           [src]="property.images[0].image"/>
+           [src]="property.images[0]?.image || '/assets/images/image-placeholder.png'"/>
     </a>
 
     <div fxFlex="100" fxLayout="column" class="p-24">
