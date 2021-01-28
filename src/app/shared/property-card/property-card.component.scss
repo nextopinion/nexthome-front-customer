@@ -83,6 +83,14 @@ mat-card.property-card {
     }
   }
 
+  div.footer {
+    div.features {
+      > span + span {
+        margin-left: 8px;
+      }
+    }
+  }
+
   mat-progress-bar {
     margin-top: 6px;
   }
