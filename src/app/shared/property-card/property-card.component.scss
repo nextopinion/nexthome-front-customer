@@ -41,6 +41,8 @@ mat-card.property-card {
     }
 
     &.extra-expanses {
+      padding-top: 4px;
+
       span + span {
         padding-left: 22px;
         position: relative;
@@ -56,7 +58,7 @@ mat-card.property-card {
     }
 
     &.description {
-      line-height: 24px;
+      line-height: 26px;
       color: #999;
       flex: 1;
       overflow: hidden;
